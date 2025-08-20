@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Docker Script Generator</title>
+  <style>
+    .container-block { border: 1px solid #ddd; padding: 1em; margin-bottom: 1em; }
+    .remove-btn { background: #e74c3c; color: white; border: none; padding: 0.2em 0.5em; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Generate Script</h1>
+
+  <form method="post">
+    <div id="containers"></div>
+
+    <button type="button" onclick="addContainer()">Add Container</button>
+    <button type="submit">Download Script</button>
+  </form>
+
+  <template id="container-template">
+    <div class="container-block">
+      <button type="button" class="remove-btn" onclick="this.closest('.container-block').remove()">✕ Remove</button>
+
+      <p>
+        <label>Docker Image Name:<br />
+          <input type="text" name="image_name[]" required placeholder="e.g. nginx:latest" />
+        </label>
+      </p>
+
+      <p>
+        <label>Container Name:<br />
+          <input type="text" name="container_name[]" required placeholder="e.g. web-server" />
+        </label>
+      </p>
+
+      <p>
+        <label>Host Port:<br />
+          <input type="number" name="host_port[]" required min="1" max="65535" />
+        </label>
+      </p>
+
+      <p>
+        <label>Container Port:<br />
+          <input type="number" name="container_port[]" required min="1" max="65535" />
+        </label>
+      </p>
+
+      <p>
+        <label>Volume Mapping (optional):<br />
+          <input type="text" name="volume_mapping[]" placeholder="/host/path:/container/path" />
+        </label>
+      </p>
+
+      <p>
+        <label>Environment Variables (one per line, optional):<br />
+          <textarea name="env_vars[]" rows="3" placeholder="KEY=value"></textarea>
+        </label>
+      </p>
+    </div>
+  </template>
+
+  <script>
+    function addContainer() {
+      const tmpl = document.getElementById("container-template");
+      document.getElementById("containers").appendChild(tmpl.content.cloneNode(true));
+    }
+
+    // Add one block by default
+    addContainer();
+  </script>
+</body>
+</html>
