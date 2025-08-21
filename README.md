@@ -58,10 +58,10 @@ A Flask-based web application that generates a Bash script to install Docker Eng
    ```
 3. Add the containers you want to the list
 4. Click **Download script** to retrieve the generated Bash script.  
-5. Transfer `setup_docker.sh` to your Ubuntu server, make it executable, and run it:  
+5. Transfer `setup.sh` to your Ubuntu server, make it executable, and run it:  
    ```bash
-   chmod +x setup_docker.sh
-   ./setup_docker.sh
+   chmod +x setup.sh
+   ./setup.sh
    ```
 
 ---
