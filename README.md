@@ -21,7 +21,7 @@ A Flask-based web application that generates a Bash script to install Docker Eng
    cd auto-script-generation-for-servers
    ```
 
-2. (Optional) Create and activate a virtual environment (use ```bash python3``` on mac/linux  
+2. (Optional) Create and activate a virtual environment (use ```python3``` on mac/linux  
    ```bash
    python -m venv venv
    ```
